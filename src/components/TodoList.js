@@ -1,20 +1,19 @@
 import React from "react";
 
-const TodoList = ({ todos, onComplete }) => {
+const TodoList = ({ todos, handleComplete }) => {
   return (
     <div className="todo-list">
-      <h2>Child component</h2>
+      <h2>Child Component</h2>
       {todos.length === 0 ? (
         <p>No todos available</p>
       ) : (
         <ul>
           {todos.map(todo => (
-            <li key={todo.id} className={todo.completed ? 'completed' : ''}>
+            <li key={todo.id} className={todo.isCompleted ? 'completed' : ''}>
               <span className="todo-text">{todo.text}</span>
-             
-              {!todo.completed && (
-                <button 
-                  onClick={() => onComplete(todo.id)}
+              {!todo.isCompleted && (
+                <button
+                  onClick={() => handleComplete(todo.id)}
                   className="complete-btn"
                 >
                   Complete
@@ -24,8 +23,6 @@ const TodoList = ({ todos, onComplete }) => {
           ))}
         </ul>
       )}
-      
-    
     </div>
   );
 };

@@ -6,25 +6,26 @@ import TodoList from "./TodoList";
 const App = () => {
 
   const [todos, setTodos] = React.useState([
-    { id: 1, text: 'Learn React', completed: false },
-    { id: 2, text: 'Build a todo app', completed: false },
-    { id: 3, text: 'Deploy react app', completed: false }
+    { id: 1, text: 'Learn React', isCompleted: false },
+    { id: 2, text: 'Build a React app', isCompleted: false },
+    { id: 3, text: 'Deploy the React app', isCompleted: false }
   ]);
 
-const handleComplete = (todoId) => {
+  const handleComplete = (id) => {
     setTodos(prevTodos =>
       prevTodos.map(todo =>
-        todo.id === todoId
-          ? { ...todo, completed: true }
+        todo.id === id
+          ? { ...todo, isCompleted: true }
           : todo
       )
     );
   };
+
   return (
     <div>
         {/* Do not remove the main div */}
-          <h1>Parent component</h1>
-        <TodoList todos={todos} onComplete={handleComplete}  />
+        <h1>Parent Component</h1>
+        <TodoList todos={todos} handleComplete={handleComplete} />
     </div>
   )
 }
